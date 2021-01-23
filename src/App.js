@@ -6,6 +6,7 @@ import Logo from './Components/Logo/Logo'
 import ImageLink from './Components/ImageLink/ImageLink';
 import Rank from './Components/Rank/Rank';
 import Detector from './Components/Detector/Detector'
+import SigninForm from "./Components/SignIn/SignInForm"
 
 import './App.css';
 
@@ -80,6 +81,7 @@ onButtonClick =()=>{
     return (
       <div className="App">
           <Particles className='particles' params={particleOption}/>
+          <SigninForm/>
           <Navigation/>
           <Logo/>  
           <Rank/>
