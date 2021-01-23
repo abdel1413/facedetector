@@ -34,8 +34,8 @@ class App extends Component {
     super();
     this.state={
       input : '',
-       imageUrl :'',
-       box:''
+      imageUrl :'',
+      box:{}
 
     }
   }
@@ -51,17 +51,17 @@ class App extends Component {
    const image = document.getElementById('imageId')
    const width =  Number( image.width)
    const height = Number( image.height)
-   return {
+   return ({
      leftCol : clarifaiFace.left_col * width,
      topRow : clarifaiFace.top_row * height,
      rightCol: width - (clarifaiFace.right_col * width),
-     bottonRow: height - (clarifaiFace.bottom_row * height)
-   }
+     bottomRow: height - (clarifaiFace.bottom_row * height)
+   })
   }
 
    displayBox =(box) =>{
      console.log(box)
-     this.setState({box})
+     this.setState({box:box})
 
    }
 
@@ -84,7 +84,7 @@ onButtonClick =()=>{
           <Logo/>  
           <Rank/>
           <ImageLink onInputChange = {this.onInputChange} onButtonClick = {this.onButtonClick}/>
-          <Detector imageUrl ={this.state.imageUrl}/>
+          <Detector imageUrl ={this.state.imageUrl} box ={this.state.box}/>
         </div>
     );
     
