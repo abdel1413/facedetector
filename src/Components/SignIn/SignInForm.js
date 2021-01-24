@@ -1,8 +1,8 @@
 import React from 'react'
-const SigninForm =() =>{
+const SignInForm =({ onRouteChange }) =>{
     return(
         <div>
-            <article className="br3 ba dark-gray b--black-10 shadow-5 mv4 w-100 w-50-m w-25-l mw5 center">
+            <article className="br3 ba dark-gray shadow-5 mv4 w-100 w-50-m w-25-l mw5 center">
                 <main className="pa4 black-80">
                     <form class="measure ">
                         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
@@ -17,12 +17,15 @@ const SigninForm =() =>{
                         </div>
                         </fieldset>
                         <div className="">
-                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+                            <input 
+                            onClick ={() =>onRouteChange('home')}
+                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                            type="submit" 
+                            value="Signin"/>
                         </div>
-                        <div className="lh-copy mt3">
-                        <a href="#0" class="f6 link dim black db">Sign Up</a>
-                    
-                        </div>
+                            <div className="lh-copy mt3">
+                                <a href="#0" class="f6 link dim black db"  >Register</a>
+                            </div>
                     </form>
                 </main>
             </article>
@@ -30,4 +33,4 @@ const SigninForm =() =>{
 
     )
 }
-export default SigninForm;
+export default SignInForm;

@@ -6,7 +6,8 @@ import Logo from './Components/Logo/Logo'
 import ImageLink from './Components/ImageLink/ImageLink';
 import Rank from './Components/Rank/Rank';
 import Detector from './Components/Detector/Detector'
-import SigninForm from "./Components/SignIn/SignInForm"
+import SignInForm from "./Components/SignIn/SignInForm"
+// import RegisterForm from './Components/Register/RegisterForm'
 
 import './App.css';
 
@@ -36,7 +37,8 @@ class App extends Component {
     this.state={
       input : '',
       imageUrl :'',
-      box:{}
+      box:{} ,
+      route :'SignInForm'
 
     }
   }
@@ -76,17 +78,29 @@ onButtonClick =()=>{
       })
     .catch(err => console.log(err))
 }
+
+onRouteChange =(route) =>{
+  this.setState({route:route})
+  
+}
   render(){
 
     return (
       <div className="App">
           <Particles className='particles' params={particleOption}/>
-          <SigninForm/>
-          <Navigation/>
-          <Logo/>  
-          <Rank/>
-          <ImageLink onInputChange = {this.onInputChange} onButtonClick = {this.onButtonClick}/>
-          <Detector imageUrl ={this.state.imageUrl} box ={this.state.box}/>
+          <Navigation onRouteChange ={this.onRouteChange}/>
+          
+          
+          { this.state.route === 'SignInForm'
+             ? <SignInForm onRouteChange = {this.onRouteChange}/>
+              :<div>
+                  {/* <RegisterForm/> */}
+                  <Logo/>  
+                  <Rank/>
+                  <ImageLink onInputChange = {this.onInputChange} onButtonClick = {this.onButtonClick}/>
+                  <Detector imageUrl ={this.state.imageUrl} box ={this.state.box}/>
+              </div>
+         }
         </div>
     );
     
