@@ -10,6 +10,7 @@ import SignInForm from "./Components/SignIn/SignInForm"
 // import RegisterForm from './Components/Register/RegisterForm'
 
 import './App.css';
+import RegisterForm from './Components/Register/RegisterForm';
 
 const app = new Clarifai.App({
   //apiKey:'98f683fb10f0429c9ef1619e7610720a'
@@ -90,16 +91,18 @@ onRouteChange =(route) =>{
           <Particles className='particles' params={particleOption}/>
           <Navigation onRouteChange ={this.onRouteChange}/>
           
-          
-          { this.state.route === 'SignInForm'
-             ? <SignInForm onRouteChange = {this.onRouteChange}/>
-              :<div>
-                  {/* <RegisterForm/> */}
+          { this.state.route === 'home'
+             ? <div>
                   <Logo/>  
                   <Rank/>
                   <ImageLink onInputChange = {this.onInputChange} onButtonClick = {this.onButtonClick}/>
                   <Detector imageUrl ={this.state.imageUrl} box ={this.state.box}/>
               </div>
+              :(
+                this.state.route === 'SignInForm'
+                ?<SignInForm onRouteChange = {this.onRouteChange}/>
+                :<RegisterForm onRouteChange = {this.onRouteChange}/>
+              )
          }
         </div>
     );

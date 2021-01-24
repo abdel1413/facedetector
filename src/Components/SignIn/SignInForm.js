@@ -23,9 +23,12 @@ const SignInForm =({ onRouteChange }) =>{
                             type="submit" 
                             value="Signin"/>
                         </div>
-                            <div className="lh-copy mt3">
-                                <a href="#0" class="f6 link dim black db"  >Register</a>
-                            </div>
+                        <div className="lh-copy mt3">
+                            <p 
+                            onClick ={()=> onRouteChange('RegisteForm')}
+                            class="f6 link dim black db pointer cursor">Register
+                            </p>
+                        </div>
                     </form>
                 </main>
             </article>

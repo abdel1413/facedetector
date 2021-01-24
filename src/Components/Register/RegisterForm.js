@@ -1,5 +1,5 @@
 import React from 'react'
-const RegisterForm =() =>{
+const RegisterForm =({onRouteChange}) =>{
     return(
         <div>
             <article className="br3 ba dark-gray shadow-5 mv4 w-100 w-50-m w-25-l mw5 center">
@@ -7,7 +7,7 @@ const RegisterForm =() =>{
                     <form class="measure ">
                         <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
                         <legend className="f4 fw6 ph0 mh0">Enter your name</legend>
-                        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password"/>
+                        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="input" name="name"  id="name"/>
                         <div claclassNamess="mt3">
                             <label className="db fw6 lh-copy f6" for="email-address"> Enter your Email</label>
                             <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
@@ -18,12 +18,13 @@ const RegisterForm =() =>{
                         </div>
                         </fieldset>
                         <div className="">
-                        <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in"/>
+                        <input 
+                        onClick ={()=>onRouteChange('home')}
+                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+                        type="submit" 
+                        value="Register"/>
                         </div>
-                        <div className="lh-copy mt3">
-                        <a href="#0" class="f6 link dim black db">Register</a>
-                    
-                        </div>
+                       
                     </form>
                 </main>
             </article>
