@@ -39,7 +39,8 @@ class App extends Component {
       input : '',
       imageUrl :'',
       box:{} ,
-      route :'SignInForm'
+      route :'SignInForm',
+      isSignedIn : false
 
     }
   }
@@ -81,6 +82,12 @@ onButtonClick =()=>{
 }
 
 onRouteChange =(route) =>{
+  if(route ==='signout'){
+    this.setState({isSignedIn: false})
+  }
+  else if(route === 'home'){
+    this.setState({isSignedIn:true})
+  }
   this.setState({route:route})
   
 }
@@ -89,7 +96,7 @@ onRouteChange =(route) =>{
     return (
       <div className="App">
           <Particles className='particles' params={particleOption}/>
-          <Navigation onRouteChange ={this.onRouteChange}/>
+          <Navigation  isSignedIn = {this.state.isSignedIn} onRouteChange ={this.onRouteChange}/>
           
           { this.state.route === 'home'
              ? <div>
@@ -99,7 +106,7 @@ onRouteChange =(route) =>{
                   <Detector imageUrl ={this.state.imageUrl} box ={this.state.box}/>
               </div>
               :(
-                this.state.route === 'SignInForm'
+                this.state.route === 'signin'
                 ?<SignInForm onRouteChange = {this.onRouteChange}/>
                 :<RegisterForm onRouteChange = {this.onRouteChange}/>
               )
